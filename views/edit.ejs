@@ -1,0 +1,84 @@
+<%- include('partials/head') %>
+
+
+
+ <style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+
+    form {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    label {
+        margin-top: 10px;
+        display: block;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+<form action="/books/<%= book._id %>?_method=PUT" method="POST">
+    <h1 class="display-4 mb-4">Edit Book Information</h1>
+
+    <label for="title">Book Title</label>
+    <input type="text" name="title" id="title" class="form-control" placeholder="Book title" value="<%= book.title %>">
+
+    <label for="author">Author</label>
+    <input type="text" name="author" id="author" class="form-control" placeholder="Author" value="<%= book.author %>">
+
+    <label for="genre">Select Genre</label>
+    <select name="genre" id="genre" class="form-control">
+        <% for(let genre of genres){ %>
+            <option value="<%= genre %>" <%= book.genre === genre ? 'selected' : '' %>><%= genre %></option>
+        <% } %>
+    </select>
+
+    <label for="isbn">ISBN</label>
+    <input type="text" name="isbn" id="isbn" class="form-control" placeholder="ISBN" value="<%= book.isbn %>">
+
+    <label for="biography">Author Biography</label>
+    <textarea name="biography" id="biography" class="form-control" placeholder="Author Biography"><%= book.biography %></textarea>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/books/<%=book._id%>" class="btn btn-success m-5">Cancel</a>
+</form>
+
+
+
+
+</div>

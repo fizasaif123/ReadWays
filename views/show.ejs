@@ -1,0 +1,68 @@
+<%- include('partials/head') %>
+
+<style>
+  /* Custom styles for a more impressive look */
+  body {
+      background-color: #f8f9fa;
+      padding-top: 50px;
+  }
+
+  .book-container {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      margin: 20px auto;
+      transition: transform 0.3s ease-in-out;
+      max-width: 600px;
+  }
+
+  .book-container:hover {
+      transform: scale(1.05);
+  }
+
+  h1 {
+      color: #007bff;
+  }
+
+  .list-group-item {
+      border: none;
+      color: #495057;
+      font-weight: bold;
+  }
+
+  .list-group-item span {
+      font-weight: normal;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+<div class="book-container bg-light p-3">
+  <h1 class="display-4"><%= books.title %></h1>
+  <ul class="list-group">
+      <li class="list-group-item">Author: <span><%= books.author %></span></li>
+      <li class="list-group-item">Genre:: <a href="/books?genre=<%= books.genre%>"><%= books.genre%></a></li>
+      <li class="list-group-item">ISBN: <span><%= books.isbn %></span></li>
+      <li class="list-group-item">Biography: <span><%= books.biography %></span></li>
+      
+  </ul>
+
+  <a href="/books/<%=books._id%>/edit" class="btn btn-primary">Edit Book</a>
+
+      <form action="/books/<%=books._id%>?_method=DELETE" class="form-group"  method="POST">
+        <a class="btn btn-danger mt-3 ">Delete</a>
+    </form>
+      <a href="/books" class="btn btn-success mt-4">All Books</a>
+</div>
+
+
+ 
+
+
+
+
+
+</div>

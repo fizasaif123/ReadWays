@@ -1,0 +1,52 @@
+<%- include('partials/head') %>
+
+
+<style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .card {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card-title {
+      color: #007bff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1 class="text-center mb-4"><%= genre%> Books!</h1>
+
+  <div class="row">
+    <% books.forEach(book => { %>
+      <div class="col-md-6">
+        <div class="card mb-4">
+          <div class="card-body">
+            <li><a href="/books/<%=book._id%>" class="card-title"><%= book.title %></a> </li>
+            <p class="card-text"><strong>Author:</strong> <%= book.author %></p>
+            <p class="card-text"><strong>Genre:</strong> <%= book.genre %></p>
+            <p class="card-text"><strong>ISBN:</strong> <%= book.isbn %></p>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+  <%if(genre !== 'All') {%>
+    <a href="/books">All Books</a>
+    <% } %>
+
+
+</div>
