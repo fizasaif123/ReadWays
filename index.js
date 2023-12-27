@@ -24,14 +24,20 @@ const Book = require('./models/books');
 const Author=require('./models/author');
 
 
-mongoose.connect('mongodb://localhost:27017/readWays', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("MONGO CONNECTION OPEN!!!")
-    })
-    .catch(err => {
-        console.log("OH NO MONGO CONNECTION ERROR!!!!")
-        console.log(err)
-    })
+
+const connectDB=async ()=>{
+
+    try{
+        await mongoose.connect("mongodb+srv://fizasaif:married098@bookstore.y3fsphg.mongodb.net/?retryWrites=true&w=majority")
+        console.log("connected!")
+    }
+    catch(error){
+        console.log("connection failed"+ error)
+    }
+
+
+}
+connectDB();
 
 
 app.set('views', path.join(__dirname, 'views'));
